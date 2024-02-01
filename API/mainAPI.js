@@ -21,7 +21,20 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
                 url: 'players/',
                 method: 'POST',
                 body: name, breed, status, imageUrl,  
+             }),
+        }),
+
+         //retrieve a single player
+         fetchPlayerId: builder.query({ 
+            query: (playerId) => ({ 
+                url: `player/${playerId}`, 
+                method: `GET`, 
+                headers: { 
+                    'Content-Type': 'application/json', 
+                },
+            }),
          }),
+
         //     This function defines an endpoint to create a new player
         // }),
         // deletePlayer: builder.mutation({
@@ -32,7 +45,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
         //      This function defines an endpoint to delete a player
         // }),
         }),
-    })
+    });
 
-})
-export const { useFetchPlayersQuery, useCreatePlayerMutation } = mainApi;
+export const { useFetchPlayersQuery, useCreatePlayerMutation, useFetchPlayerIdQuery} = mainApi;

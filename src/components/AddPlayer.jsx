@@ -38,10 +38,11 @@ export default function AddPlayer() {
   };
 
 
+
   return (
   <>
-      <h2>Welcome to the Unit3 Puppy Bowl</h2>
-      <h3>Fillout this form to add your player!</h3>
+      <h2 className="bordered-text">Welcome to the Unit3 Puppy Bowl</h2>
+      <h3 className="underlined-p">Fillout thr form below to add your player!</h3>
 
     <form onSubmit={handleSubmit}>
       <label>
