@@ -24,7 +24,6 @@ export default function AllPlayers() {
           <img src={player.imageUrl} alt={player.name} />
           <Link to={`/singleplayer/${player.id}`}>More Details</Link>
           <button className="deletePlayerBtn">Remove player</button>
-          {/* TODO: Add a link that redirect to a player detail */}
         </div>
       ))}
     </div>
