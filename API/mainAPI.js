@@ -30,14 +30,9 @@ export const mainApi = createApi({
 
     //retrieve a single player
     fetchPlayerId: builder.query({
-      query: (playerId) => ({
-        url: `player/${playerId}`,
-        method: `GET`,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }),
+      query: (playerId) => `players/${playerId}`,
     }),
+   }),
 
     //     This function defines an endpoint to create a new player
     // }),
@@ -48,8 +43,8 @@ export const mainApi = createApi({
     //     }),
     //      This function defines an endpoint to delete a player
     // }),
-  }),
-});
+  });
+
 
 export const {
   useFetchPlayersQuery,

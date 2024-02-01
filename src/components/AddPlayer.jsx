@@ -81,6 +81,16 @@ export default function AddPlayer() {
           </select>
         </label>
         <label>
+          Team Id:
+          <input
+            name="teamId"
+            value={formData.teamId}
+            onChange={handleChange}
+            autoComplete="teamId"
+            required
+          />
+        </label>
+        <label>
           Image URL:
           <input
             name="imageUrl"

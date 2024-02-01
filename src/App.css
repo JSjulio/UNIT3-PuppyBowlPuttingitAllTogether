@@ -60,21 +60,47 @@ label {
   background-color: rgb(201, 212, 192);
 }
 
-.singlePlayer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: left;
-  background-color: rgb(152, 214, 255);
-  max-width: 60%;
-}
-
-.singlePlayer img {
-  width: 80%;
-  align-items: center;
-}
+.singlePlayerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the card horizontally */
+    padding: 20px;
+    background-color: #99c3d7; /* Light blue background for the whole container */
+  }
+  
+  .singlePlayer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #e3d5b5; /* Light blue background for the card */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+    margin: 20px 0; /* space above and below the card */
+    width: 100%;
+    max-width: 300px; /* maximum width of the card */
+  }
+  
+  .singlePlayer img {
+    width: 50%; /* Adjust the image size as needed */
+    border-radius: 50%; /* Make the image round */
+    margin-bottom: 20px; /* space below the image */
+    align-self: center; /* Center the image in the flex container */
+  }
+  
+  /* Add styles for the player details text to enhance readability */
+  .singlePlayer h4 {
+    margin-bottom: 10px;
+    font-size: 1.5rem; /* Larger text for the player's name */
+    color: #333; /* Dark text for better contrast */
+  }
+  
+  .singlePlayer p {
+    margin-bottom: 5px;
+    color: #555; /* Slightly lighter text for the player's details */
+  }
 
 .deletePlayerBtn {
   color: black;
