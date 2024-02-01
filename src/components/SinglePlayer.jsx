@@ -12,25 +12,22 @@ export default function SinglPlayer() {
   if (isLoading) return <div>Loading player...</div>;
   if (error) return <div>Error loading player: {error.toString()}</div>;
 
-  // Destructure the player details from data.data.player
-//   const { name, breed, team, imageUrl } = data?.data?.player || {}; // Adjusted for the nested 'data.data.player'
-
     console.log(data.data.player); 
 
     return (
         <>
           <div className="singlePlayerContainer">
-            {/* Directly accessing the properties of data.data.player since it's a single object */}
+          <h1 className="player-details">Player Details</h1>
               <div className="singlePlayer">
-                <h4>Dog Name :{data.data.player.name}</h4>
+                <h3>Dog Name: {data.data.player.name}</h3>
                 <p>Pet owner: Isaias</p>
+                <p>Team Name: SEAL TEAM 7</p>
                 {data.data.player.imageUrl && (
                   <img src={data.data.player.imageUrl} alt={`Image of ${data.data.player.name}`} />
                 )} {/* Display player image if available */}
               </div>
           </div>
-          <h3>Player Details</h3>
-          <button onClick={goBack}>Go Back</button>
+          <button className="go-back-button" onClick={goBack}>Go Back</button>
         </>
       );
       

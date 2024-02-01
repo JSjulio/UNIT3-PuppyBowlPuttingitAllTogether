@@ -128,3 +128,8 @@ label {
 .underlined-p {
   text-decoration: underline;
 }
+
+.player-details  { 
+    text-align: center;
+}
+

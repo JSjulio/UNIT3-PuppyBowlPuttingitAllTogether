@@ -32,22 +32,23 @@ export const mainApi = createApi({
     fetchPlayerId: builder.query({
       query: (playerId) => `players/${playerId}`,
     }),
-   }),
 
-    //     This function defines an endpoint to create a new player
-    // }),
-    // deletePlayer: builder.mutation({
-    //     query: (playerId) => ({
-    //         url: `players/${playerId}`,
-    //         method: 'DELETE',
-    //     }),
-    //      This function defines an endpoint to delete a player
-    // }),
-  });
+    
+   deletePlayer: builder.mutation({
+    query: (playerId) => ({
+      url: `players/${playerId}`,
+      method: 'DELETE', // This is correct: 'method' is part of the object returned by the query function
+    }),
+  }),
+}), 
+
+})
 
 
 export const {
   useFetchPlayersQuery,
   useCreatePlayerMutation,
   useFetchPlayerIdQuery,
+  useDeletePlayerMutation,
+  
 } = mainApi;

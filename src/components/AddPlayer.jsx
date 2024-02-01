@@ -12,6 +12,7 @@ export default function AddPlayer() {
     name: "",
     breed: "",
     status: "", // will be either 'field' or 'bench'
+    team: "",
     imageUrl: "",
   });
 
