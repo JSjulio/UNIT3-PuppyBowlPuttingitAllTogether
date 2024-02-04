@@ -1,37 +1,49 @@
-import React, { useState } from 'react'; 
-import { useFetchPlayersQuery, useDeletePlayerMutation } from "../../API/mainAPI";
+import { useState } from "react";
+import {useFetchPlayersQuery,useDeletePlayerMutation} from "../../API/mainAPI";
 import { Link } from "react-router-dom";
-import AddPlayer from "./AddPlayer";
+import AddPlayer from "./AddPlayer.1";
 
 // Render all players
 export default function AllPlayers() {
-  const { data = {}, error, isLoading } = useFetchPlayersQuery();
+  const { data = {}, isError, isLoading } = useFetchPlayersQuery();
   const [deletePlayer] = useDeletePlayerMutation();
-  const [search, setSearch] = useState(''); // State for search input
+  const [search, setSearch] = useState(""); // State for search input
 
-  // Updates the search state when the input changes
-  const handleSearchChange = (event) => {
-    setSearch(event.target.value); 
-  };
-
-  const filteredPlayers = search
-    ? data.data.players.filter((player) =>
-        player.name.toLowerCase().includes(search.toLowerCase())
-      )
-    : data.data.players;
-
-  // Delete player button 
-  const handleDelete = async (playerId) => {
+  // Delete a player
+    const handleDelete = async (playerId) => {
     try {
       const response = await deletePlayer(playerId).unwrap();
-      console.log("Deletion successful:", response); 
+      console.log("Deletion successful:", response);
     } catch (err) {
       console.error("Failed to delete the player:", err);
     }
   };
 
+  //isLoading and isError catch status and errors and prevent the app from being killed/render the status on the web app 
   if (isLoading) return <div>Loading players...</div>;
-  if (error) return <div>Error loading player: {error.toString()}</div>;
+  // eslint-disable-next-line no-empty
+  if (isError)
+    return <div> There was an error while fetching your players.  </div>;
+
+//players property of data is extracted 
+  const {data: { players },} = data;
+
+  //*this constant uses a ternary operator (?)  to choose between two methods of rendering players 
+  // the first operand is the state (search) with the trim method on it 
+      // the trim method ensures that the state does not have empty space as a result of a person typing in the input with spaces
+            // this mitigates having the wrong aspect of the ternary operator running, and makes a seamless UI as a result. 
+  // The second operand (players.filter etc..) will be activated if the user types a player's name into the search bar 
+  //Otherwise, the third operand is activated if nothing is in the search 
+  // the return statement uses this logic to map through the players data and render the players 
+  
+  const loadedPlayers = search.trim() ? players.filter((player) => 
+     player.name.toLowerCase().includes(search.toLowerCase())) : players; 
+  
+ // Updates the search state when the input changes
+ const handleSearchChange = (event) => {
+  setSearch(event.target.value);
+};
+
 
   return (
     <>
@@ -45,7 +57,7 @@ export default function AllPlayers() {
         />
       </div>
       <div className="grid-container">
-        {filteredPlayers.map((player) => (
+        {loadedPlayers.map((player) => (
           <div key={player.id} className="individualPlayer">
             <h3>{player.name}</h3>
             <p>{player.breed}</p>

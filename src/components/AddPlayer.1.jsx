@@ -1,4 +1,3 @@
-//AddPlayer.jsx
 import { useCreatePlayerMutation } from "../../API/mainAPI";
 import { useState } from "react";
 
@@ -42,8 +41,11 @@ export default function AddPlayer() {
       <h3 className="underlined-p">
         Fillout the form below to add your puppy player!
       </h3>
-       {isLoading && <p>Loading...</p>}
-       {isError && <p>Error: {isError.message}</p>}
+
+      {isLoading && <p>Loading...</p>}
+
+      {isError && <p>Error: {isError.message}</p>}
+
       <form onSubmit={handleSubmit}>
         <label>
           Name:

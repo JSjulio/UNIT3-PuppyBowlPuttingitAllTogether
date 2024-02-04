@@ -49,6 +49,6 @@ export const {
   useFetchPlayersQuery,
   useCreatePlayerMutation,
   useFetchPlayerIdQuery,
-  useDeletePlayerMutation,
+  useDeletePlayerMutation
   
 } = mainApi;
